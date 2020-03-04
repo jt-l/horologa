@@ -5,7 +5,7 @@ Determine the frame length to be used in a static clock-driven scheduler.
 
 Given a set of tasks where each task contains a phase, period, execution time, and relative deadline horologa will determine if there is a valid frame length that can be used for the provided set of tasks. 
 
-A static clock-driven schedulers are applicable to deterministic systems in which the parameters of all periodic tasks are known a prior. A static schedule can be computed in advance. 
+Static clock-driven schedulers are applicable to deterministic systems in which the parameters of all periodic tasks are known a prior. A static schedule can be computed in advance. 
 
 To simplify implementation of these shedulers often it is recommended to impose structure, this is done by introducing periodic intervals called frames. Scheduling decisions are to be made at each frame. This gives two main benefits; the scheduler can check for overruns/missed deadlines at the end of each frame and the scheduler can use a periodic clock interrupt rather than a programable timer.
 
