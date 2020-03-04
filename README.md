@@ -9,7 +9,7 @@ Static clock-driven schedulers are applicable to deterministic systems in which 
 
 To simplify implementation of these shedulers often it is recommended to impose structure, this is done by introducing periodic intervals called frames. Scheduling decisions are to be made at each frame. This gives two main benefits; the scheduler can check for overruns/missed deadlines at the end of each frame and the scheduler can use a periodic clock interrupt rather than a programable timer.
 
-This program determines a valid frame length by searching frames which statisfy all three of the following constraints: 
+This program determines a valid frame length by searching for frames which statisfy all three of the following constraints: 
 
 1. frame length >= max(e_1, e_2, ... e_n)
 2. There must exist some p_i such that frame length % p_i == 0
