@@ -1,0 +1,8 @@
+{"tasks": [ 
+  {"phase": 0, "period": 4, "executionTime": 1, "relativeDeadline": 4},
+  {"phase": 0, "period": 5, "executionTime": 2, "relativeDeadline": 5},
+  {"phase": 0, "period": 20, "executionTime": 1, "relativeDeadline": 20},
+  {"phase": 0, "period": 20, "executionTime": 2, "relativeDeadline": 20}
+]
+}
+
