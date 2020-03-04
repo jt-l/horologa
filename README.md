@@ -15,5 +15,5 @@ This program determines a valid frame length by searching for frames which stati
 2. There must exist some p_i such that frame length % p_i == 0
 3. 2*frame length - gcd(p_i, frame length) > D_i for i = 1 ... n
 
-If the program cannot find a valid frame length this means that the given tasks cannot satify all three constraints at once. In this case you can attempt to generate new tasks by paritioning a task with large execution time into smaller sub tasks.
+If the program cannot find a valid frame length this means that the given tasks cannot satisfy all three constraints at once. In this case you can attempt to generate new tasks by paritioning a task with large execution time into smaller sub tasks.
 
