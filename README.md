@@ -1,7 +1,13 @@
 Horologa
 =
 
-Determine the frame length to be used in a static clock-driven scheduler. 
+Determine the frame length and hyper period to be used in a static clock-driven scheduler. 
+
+## Hyper Period
+
+The hyper period for a set of tasks is the least common multiple of all periods of each task. The hyper period gives the minimum amount of time that the schedule needs to be calculated for before the tasks can just repeat (on the determined scheule over the hyper period).
+
+## Frame Length
 
 Given a set of tasks where each task contains a phase, period, execution time, and relative deadline horologa will determine if there is a valid frame length that can be used for the provided set of tasks. 
 
