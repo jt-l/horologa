@@ -5,6 +5,7 @@ import (
   "io/ioutil"
   "encoding/json"
   "os"
+  "errors"
 )
 
 /* A periodic task is defined to have:
@@ -109,6 +110,42 @@ func determineFrameLength(tasks Tasks) int {
   return canidate_frame
 }
 
+func lcm(a int, b int) (int, error) {
+  var lcm int = 1
+
+  if (a > b) {
+    lcm = a
+  } else {
+    lcm = b
+  }
+
+  for {
+    if(lcm % a == 0 && lcm % b == 0) {
+      return lcm, nil
+    }
+    lcm++
+  }
+
+  // shouldn't reach here since the loop above continues until the lcm is found
+  return -1, errors.New("lcm failed")
+}
+
+
+func determineHyperPeriod(tasks Tasks) int {
+
+  // inital val
+  hyper_period := tasks.T[0].Period
+  var err error = nil
+
+  for _, task := range tasks.T[2:] {
+    b := task.Period
+    hyper_period, err = lcm(hyper_period,b)
+    check(err)
+  }
+
+  return hyper_period
+}
+
 
 // helper function to check for errors
 func check(e error) {
@@ -127,7 +164,11 @@ func main() {
   err := json.Unmarshal([]byte(file), &tasks)
   check(err)
 
-  // determine frame_length
   frame_length := determineFrameLength(tasks)
+  check(err)
+  hyper_period := determineHyperPeriod(tasks)
+ 
+  fmt.Println(hyper_period)
+  fmt.Println(lcm)
   fmt.Println(frame_length)
 }
