@@ -5,7 +5,7 @@ Determine the frame length and hyper period to be used in a static clock-driven 
 
 ## Hyper Period
 
-The hyper period for a set of tasks is the least common multiple of all periods of each task. The hyper period gives the minimum amount of time that the schedule needs to be calculated for before the tasks can just repeat (on the determined scheule over the hyper period).
+The hyper period for a set of tasks is the least common multiple of all periods of the given tasks. The hyper period gives the minimum amount of time that the schedule needs to be calculated for before the tasks can just repeat (on the determined schedule over the hyper period).
 
 ## Frame Length
 
