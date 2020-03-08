@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+  "github.com/jt-l/horologa/internal/app/horologa"
 )
 
 /* A periodic task is defined to have:
