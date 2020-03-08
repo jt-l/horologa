@@ -1,7 +1,6 @@
 package horologa
 
-
-/* A periodic task is defined to have:
+/*
 phase: release time of the task
 period: task needs to be scheduled every period and within the frame
 execution_time: cycles that the task takes to execute
