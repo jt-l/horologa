@@ -5,22 +5,22 @@ import (
 	"fmt"
 )
 
-//var Errors = newHorologaErrors()
+var Errors = NewHorologaErrors()
 
 // custom error type
 type HorologaError struct {
-	code int
-	err  error
+	Code int
+	Err  error
 }
 
 // implement the error interface
 func (r *HorologaError) Error() string {
-	return fmt.Sprintf("code: %d: err %v", r.code, r.err)
+	return fmt.Sprintf("code: %d: err %v", r.Code, r.Err)
 }
 
 // create a new application error
 func NewHorologaError(err error, code int) *HorologaError {
-	return &HorologaError{err: err, code: code}
+	return &HorologaError{Err: err, Code: code}
 }
 
 // struct to hold all error types

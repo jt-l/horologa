@@ -1,31 +1,8 @@
 package horologa
 
 import (
-	"encoding/json"
 	"errors"
-	"fmt"
-	"io/ioutil"
-	"os"
 )
-
-/* A periodic task is defined to have:
-phase: release time of the task
-period: task needs to be scheduled every period and within the frame
-execution_time: cycles that the task takes to execute
-relative_deadline: time from the phase in which in the task must complete
-*/
-type Task struct {
-	Phase            int `json:"phase"`
-	Period           int `json:"period"`
-	ExecutionTime    int `json:"executionTime"`
-	RelativeDeadline int `json:"relativeDeadline"`
-}
-
-type Tasks struct {
-	T []Task `json:"tasks"`
-}
-
-var Errors = NewHorologaErrors()
 
 // helper function to determine the gcd
 func gcd(a int, b int) int {
@@ -85,7 +62,7 @@ func jobsCompleteByDeadline(canidate_frame int, tasks Tasks) bool {
 	return jobs_complete
 }
 
-func determineFrameLength(tasks Tasks) (int, error) {
+func DetermineFrameLength(tasks Tasks) (int, error) {
 
 	// initalize canidate_frame to be the max of the execution times
 	canidate_frame := maxExecutionTime(tasks)
@@ -129,7 +106,7 @@ func lcm(a int, b int) (int, error) {
 	return -1, errors.New("lcm failed")
 }
 
-func determineHyperPeriod(tasks Tasks) (int, error) {
+func DetermineHyperPeriod(tasks Tasks) (int, error) {
 
 	// inital val
 	hyper_period := tasks.T[0].Period
@@ -145,36 +122,4 @@ func determineHyperPeriod(tasks Tasks) (int, error) {
 	}
 
 	return hyper_period, nil
-}
-
-func Run() {
-
-	// tasks to schedule
-	tasks := Tasks{}
-
-	// parse tasks file
-	file, _ := ioutil.ReadFile("tasks.json")
-	err := json.Unmarshal([]byte(file), &tasks)
-
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(Errors.FailedToParseTasks.code)
-	}
-
-	// determine frame length
-	frame_length, err := determineFrameLength(tasks)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(Errors.FailedToDetermineFrameLength.code)
-	}
-
-	// determine hyper period
-	hyper_period, err := determineHyperPeriod(tasks)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(Errors.FailedToDetermineHyperPeriod.code)
-	}
-
-	fmt.Println("Hyper Period:", hyper_period)
-	fmt.Println("Frame Length:", frame_length)
 }
