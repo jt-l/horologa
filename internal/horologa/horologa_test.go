@@ -51,9 +51,9 @@ func TestLcmDiff(t *testing.T) {
 }
 
 func TestLcmPrime(t *testing.T) {
-  var expectedResult int = 7*9
+  var expectedResult int = 7*11
 
-  result, err := lcm(7, 9)
+  result, err := lcm(7, 11)
 
   if err != nil {
     t.Fatalf("unexpected error LCM")
