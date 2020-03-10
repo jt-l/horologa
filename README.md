@@ -1,7 +1,15 @@
 Horologa
 =
 
-Determine the frame length and hyper period to be used in a static clock-driven scheduler. 
+Determine the utilization, hyper period, and frame length to be used in a static clock-driven scheduler. 
+
+## Utilization
+
+This program calculates the rate-monotonic utilization of a set of tasks.
+
+Liu & Layland (1973) proved that for a set of n period tasks with unique periods, a feasible schedule that will always meet deadlines exists if the CPU utilization is below a specific bound (depending on the number of tasks). The scheduling test for this is the following equation: 
+
+Utility = sum i = 1 to n [e_i/c_i] <= (2^(1/n) - 1)
 
 ## Hyper Period
 

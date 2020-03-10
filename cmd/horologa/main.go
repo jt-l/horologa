@@ -37,6 +37,9 @@ func main() {
     os.Exit(horologa.Errors.FailedToDetermineHyperPeriod.Code)
   }
 
+  utilzation := horologa.DetermineUtilization(tasks)
+
   fmt.Println("Hyper Period:", hyper_period)
   fmt.Println("Frame Length:", frame_length)
+  fmt.Println("Utilization:", utilzation)
 }

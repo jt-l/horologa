@@ -2,6 +2,7 @@ package horologa
 
 import (
 	"errors"
+  "fmt"
 )
 
 // helper function to determine the gcd
@@ -122,4 +123,18 @@ func DetermineHyperPeriod(tasks Tasks) (int, error) {
 	}
 
 	return hyper_period, nil
+}
+
+/* Utilization - this function returns 1 if the set of tasks
+completely utilize the 'processor' => utilization = 1 means 
+the schedule is optimal. 
+*/
+func DetermineUtilization(tasks Tasks) (float64) {
+  var utilization float64 = 0
+  
+  for _, task := range tasks.T {
+    utilization += float64(task.ExecutionTime)/float64(task.Period)
+  }
+
+  return utilization
 }
